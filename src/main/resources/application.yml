@@ -1,0 +1,35 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    root: info
+
+management:
+  endpoint:
+    health:
+      show-detail: always
+      show-components: always
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: widgetdb
+  datasource:
+    url: jdbc:postgresql://localhost:5432/widgetdb
+    username: postgres
+    password: docker
+  jackson:
+    default-property-inclusion: NON_NULL
+  flyway:
+    url : jdbc:postgresql://localhost:5432/widgetdb
+    user : postgres
+    password : docker
+    enabled: true
+    locations: classpath:db/migration
+    schemas: widgetdb
